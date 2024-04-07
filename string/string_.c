@@ -2,6 +2,7 @@
 // Created by Admin on 04.04.2024.
 //
 #include "string_.h"
+#include <ctype.h>
 
 int strlen1(char *s) {
     int i = 0;
@@ -26,4 +27,16 @@ size_t strlen_(const char *begin) {
     return end - begin;
 }
 
+char* find(char *begin, char *end, int ch) {
+    while (begin != end && *begin != ch)
+        begin++;
+    return begin;
+}
 
+char* findNonSpace(char *begin) {
+    char *end = begin;
+    while (isspace(*end) && *end != '\0') {
+        end++;
+    }
+    return end;
+}

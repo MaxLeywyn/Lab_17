@@ -5,4 +5,7 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(Lab_17 main.c
         string/string_.c
-        string/string_.h)
+        string/string_.h
+        string/string_test.h
+        string/string_test.c)
+
