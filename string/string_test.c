@@ -19,4 +19,11 @@ void findSpace_test(){
     assert(*findSpace(c)=='\0');
 }
 
-
+void findNonSpaceReverse_test(){
+    char a[] = "31 hen";
+    assert(*findNonSpaceReverse(a+ strlen_(a)-1,a-1)=='n');
+    char b[] = "  ";
+    assert(findNonSpaceReverse(b+ strlen_(b)-1,b-1)==b-1);
+    char c[] = "";
+    assert(findNonSpaceReverse(c+ strlen_(c)-1,c-1)==c-1);
+}

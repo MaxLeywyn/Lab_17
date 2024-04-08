@@ -49,7 +49,12 @@ char* findSpace(char *begin){
     return end;
 }
 
-
+char* findNonSpaceReverse(char *rbegin, const char *rend){
+    while(rbegin!=rend && isspace(*rbegin)){
+        rbegin--;
+    }
+    return rbegin;
+}
 
 
 
