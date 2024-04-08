@@ -27,3 +27,14 @@ void findNonSpaceReverse_test(){
     char c[] = "";
     assert(findNonSpaceReverse(c+ strlen_(c)-1,c-1)==c-1);
 }
+
+void findSpaceReverse_test(){
+    char a[] = "31 cfw";
+    assert(*findSpaceReverse(a+ strlen_(a)-1,a-1)==' ');
+    char b[] = " ";
+    assert(*findSpaceReverse(b+ strlen_(b)-1,b-1)==' ');
+    char c[] = "";
+    assert(findSpaceReverse(c+ strlen_(c)-1,c-1)==c-1);
+}
+
+
