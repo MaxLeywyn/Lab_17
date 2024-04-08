@@ -27,13 +27,13 @@ size_t strlen_(const char *begin) {
     return end - begin;
 }
 
-char* find(char *begin, char *end, int ch) {
+char *find(char *begin, char *end, int ch) {
     while (begin != end && *begin != ch)
         begin++;
     return begin;
 }
 
-char* findNonSpace(char *begin) {
+char *findNonSpace(char *begin) {
     char *end = begin;
     while (isspace(*end) && *end != '\0') {
         end++;
@@ -41,7 +41,7 @@ char* findNonSpace(char *begin) {
     return end;
 }
 
-char* findSpace(char *begin){
+char *findSpace(char *begin) {
     char *end = begin;
     while (!(isspace(*end)) && *end != '\0') {
         end++;
@@ -49,17 +49,23 @@ char* findSpace(char *begin){
     return end;
 }
 
-char* findNonSpaceReverse(char *rbegin, const char *rend){
-    while(rbegin!=rend && isspace(*rbegin)){
+char *findNonSpaceReverse(char *rbegin, const char *rend) {
+    while (rbegin != rend && isspace(*rbegin)) {
         rbegin--;
     }
     return rbegin;
 }
 
-char* findSpaceReverse(char *rbegin, const char *rend){
-    while (rbegin!=rend && !(isspace(*rbegin)))
+char *findSpaceReverse(char *rbegin, const char *rend) {
+    while (rbegin != rend && !(isspace(*rbegin)))
         rbegin--;
     return rbegin;
+}
+
+int strcmp(const char *lhs, const char *rhs) {
+    while ((*lhs != '\0' || *rhs != '\0') && *lhs == *rhs)
+        lhs++, rhs++;
+    return *lhs-*rhs;
 }
 
 

@@ -37,4 +37,17 @@ void findSpaceReverse_test(){
     assert(findSpaceReverse(c+ strlen_(c)-1,c-1)==c-1);
 }
 
-
+void strcmp_test(){
+    char a[] = "33 hwf";
+    char b[] = "33 hwf";
+    assert(strcmp(a,b)==0);
+    char c[] = "33 ";
+    char d[] = "33 hwf";
+    assert(strcmp(c,d)<0);
+    char e[] = "";
+    char f[] = "";
+    assert(strcmp(e,f)==0);
+    char g[] = "33 hwg";
+    char h[] = "33 hwf";
+    assert(strcmp(g,h)>0);
+}

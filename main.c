@@ -4,7 +4,7 @@
 
 int main() {
 
-    findSpaceReverse_test();
+    strcmp_test();
 
     return 0;
 }
