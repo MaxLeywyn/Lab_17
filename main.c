@@ -4,7 +4,7 @@
 
 int main() {
 
-    findNonSpace_test();
+    findSpaceReverse_test();
 
     return 0;
 }

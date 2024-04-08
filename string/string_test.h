@@ -6,6 +6,11 @@
 
 void findNonSpace_test();
 
+void findSpace_test();
+
+void findNonSpaceReverse_test();
+
+void findSpaceReverse_test();
 
 
 #endif //LAB_17_STRING_TEST_H

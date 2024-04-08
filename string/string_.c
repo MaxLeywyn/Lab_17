@@ -40,3 +40,18 @@ char* findNonSpace(char *begin) {
     }
     return end;
 }
+
+char* findSpace(char *begin){
+    char *end = begin;
+    while (!(isspace(*end)) && *end != '\0') {
+        end++;
+    }
+    return end;
+}
+
+
+
+
+
+
+
