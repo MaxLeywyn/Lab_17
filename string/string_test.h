@@ -14,5 +14,7 @@ void findSpaceReverse_test();
 
 void strcmp_test();
 
+void copy_test();
+
 
 #endif //LAB_17_STRING_TEST_H

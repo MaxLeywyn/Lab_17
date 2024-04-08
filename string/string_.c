@@ -2,6 +2,7 @@
 // Created by Admin on 04.04.2024.
 //
 #include "string_.h"
+#include <memory.h>
 #include <ctype.h>
 
 int strlen1(char *s) {
@@ -65,10 +66,13 @@ char *findSpaceReverse(char *rbegin, const char *rend) {
 int strcmp(const char *lhs, const char *rhs) {
     while ((*lhs != '\0' || *rhs != '\0') && *lhs == *rhs)
         lhs++, rhs++;
-    return *lhs-*rhs;
+    return *lhs - *rhs;
 }
 
-
+char *copy(const char *beginSource, const char *endSource, char *beginDestination) {
+    memcpy(beginDestination, beginSource, endSource - beginSource);
+    return beginDestination + (endSource - beginSource)+1;
+}
 
 
 
