@@ -41,7 +41,7 @@ void strcmp_test() {
     char a[] = "33 hwf";
     char b[] = "33 hwf";
     assert(strcmp(a, b) == 0);
-    char c[] = "33 ";
+    char c[] = "33 \t";
     char d[] = "33 hwf";
     assert(strcmp(c, d) < 0);
     char e[] = "";
@@ -63,4 +63,22 @@ void copy_test() {
     char f[] = "";
     assert(copy(e, e + strlen_(e), f) == f + strlen_(e) + 1);
 }
+
+int f(int a) {
+    return (char)a > '0' && (char)a < '9' ? 1 : 0;
+}
+
+void copyIf_test(){
+    char a[] = "33 hwf";
+    char b[] = "";
+    assert(copyIf(a, a + strlen_(a),b,f) == b + 2);
+    char c[] = " hwf";
+    char d[] = "";
+    assert(copyIf(c, c + strlen_(c),d,f) == d);
+    char e[] = "354488";
+    char g[] = "87";
+    assert(copyIf(e, e + strlen_(e),g,f) == g+6);
+    assert(*(copyIf(e, e + strlen_(e),g,f)-1) == '8');
+}
+
 

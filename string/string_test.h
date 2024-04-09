@@ -16,5 +16,7 @@ void strcmp_test();
 
 void copy_test();
 
+void copyIf_test();
+
 
 #endif //LAB_17_STRING_TEST_H
