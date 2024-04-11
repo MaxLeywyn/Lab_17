@@ -65,20 +65,42 @@ void copy_test() {
 }
 
 int f(int a) {
-    return (char)a > '0' && (char)a < '9' ? 1 : 0;
+    return (a >= '0' && a <= '9');
 }
 
 void copyIf_test(){
+    char b[2] = "";
     char a[] = "33 hwf";
-    char b[] = "";
     assert(copyIf(a, a + strlen_(a),b,f) == b + 2);
-    char c[] = " hwf";
+    assert(*(copyIf(a, a + strlen_(a),b,f)-1) == '3');
     char d[] = "";
+    char c[] = " hwf";
     assert(copyIf(c, c + strlen_(c),d,f) == d);
-    char e[] = "354488";
     char g[] = "87";
+    char e[] = "354488";
     assert(copyIf(e, e + strlen_(e),g,f) == g+6);
     assert(*(copyIf(e, e + strlen_(e),g,f)-1) == '8');
 }
 
+int g(int a) {
+    return (a >= 'A' && a <= 'Z');
+}
 
+void copyIfReverse_test(){
+    char a[] = "Hell0World";
+    char b[11];
+
+    assert(copyIfReverse(&a[9], &a[0], b, g) == b+1);
+}
+
+void all_tests(){
+
+    findNonSpace_test;
+    findSpace_test;
+    findNonSpaceReverse_test;
+    findSpaceReverse_test;
+    strcmp_test;
+    copy_test;
+    copyIf_test;
+    copyIfReverse_test;
+}

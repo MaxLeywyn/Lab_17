@@ -9,8 +9,7 @@ int main() {
 
     SetConsoleOutputCP(CP_UTF8);
 
-    copyIf_test();
-
+    all_tests();
 
     return 0;
 }

@@ -18,5 +18,10 @@ void copy_test();
 
 void copyIf_test();
 
+void copyIfReverse_test();
+
+int f(int a);
+
+void all_tests();
 
 #endif //LAB_17_STRING_TEST_H

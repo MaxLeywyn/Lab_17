@@ -70,14 +70,14 @@ int strcmp(const char *lhs, const char *rhs) {
 }
 
 char *copy(const char *beginSource, const char *endSource, char *beginDestination) {
-    memcpy(beginDestination, beginSource, sizeof(char)*(endSource - beginSource));
-    return beginDestination + sizeof(char)*(endSource - beginSource)+1;
+    memcpy(beginDestination, beginSource, sizeof(char) * (endSource - beginSource));
+    return beginDestination + sizeof(char) * (endSource - beginSource) + 1;
 }
 
-char* copyIf(char *beginSource, const char *endSource, char *beginDestination, int (*f)(int)){
-    while (beginSource!=endSource){
-        if(f(*beginSource)) {
-            memcpy(beginDestination,beginSource,sizeof(char));
+char *copyIf(char *beginSource, const char *endSource, char *beginDestination, int (*f)(int)) {
+    while (beginSource != endSource) {
+        if (f(*beginSource)) {
+            memcpy(beginDestination, beginSource, sizeof(char));
             beginDestination++;
         }
         beginSource++;
@@ -85,3 +85,13 @@ char* copyIf(char *beginSource, const char *endSource, char *beginDestination, i
     return beginDestination;
 }
 
+char* copyIfReverse(char *rbeginSource, const char *rendSource, char *beginDestination, int (*f)(int)) {
+    while (rbeginSource != rendSource) {
+        if (f(*rbeginSource)) {
+            *beginDestination = *rbeginSource;
+            beginDestination++;
+        }
+        rbeginSource--;
+    }
+    return beginDestination;
+}
