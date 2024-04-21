@@ -54,7 +54,9 @@
 			[
 				0,
 				1,
-				4
+				4,
+				6,
+				8
 			]
 		}
 	],
@@ -93,7 +95,9 @@
 			[
 				0,
 				1,
-				4
+				4,
+				6,
+				8
 			]
 		},
 		{
@@ -101,7 +105,9 @@
 			"sourceIndexes" : 
 			[
 				2,
-				3
+				3,
+				5,
+				7
 			]
 		}
 	],
@@ -133,6 +139,28 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "string/string_test.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "string/string_processing.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "string/string_processing.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "string/string_processing_test.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "string/string_processing_test.c",
 			"sourceGroupIndex" : 0
 		}
 	],

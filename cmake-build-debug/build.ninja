@@ -67,6 +67,18 @@ build CMakeFiles/Lab_17.dir/string/string_test.c.obj: C_COMPILER__Lab_17_unscann
   OBJECT_DIR = CMakeFiles\Lab_17.dir
   OBJECT_FILE_DIR = CMakeFiles\Lab_17.dir\string
 
+build CMakeFiles/Lab_17.dir/string/string_processing.c.obj: C_COMPILER__Lab_17_unscanned_Debug F$:/Git/Lab_17/string/string_processing.c || cmake_object_order_depends_target_Lab_17
+  DEP_FILE = CMakeFiles\Lab_17.dir\string\string_processing.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Lab_17.dir
+  OBJECT_FILE_DIR = CMakeFiles\Lab_17.dir\string
+
+build CMakeFiles/Lab_17.dir/string/string_processing_test.c.obj: C_COMPILER__Lab_17_unscanned_Debug F$:/Git/Lab_17/string/string_processing_test.c || cmake_object_order_depends_target_Lab_17
+  DEP_FILE = CMakeFiles\Lab_17.dir\string\string_processing_test.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Lab_17.dir
+  OBJECT_FILE_DIR = CMakeFiles\Lab_17.dir\string
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Lab_17
@@ -75,7 +87,7 @@ build CMakeFiles/Lab_17.dir/string/string_test.c.obj: C_COMPILER__Lab_17_unscann
 #############################################
 # Link the executable Lab_17.exe
 
-build Lab_17.exe: C_EXECUTABLE_LINKER__Lab_17_Debug CMakeFiles/Lab_17.dir/main.c.obj CMakeFiles/Lab_17.dir/string/string_.c.obj CMakeFiles/Lab_17.dir/string/string_test.c.obj
+build Lab_17.exe: C_EXECUTABLE_LINKER__Lab_17_Debug CMakeFiles/Lab_17.dir/main.c.obj CMakeFiles/Lab_17.dir/string/string_.c.obj CMakeFiles/Lab_17.dir/string/string_test.c.obj CMakeFiles/Lab_17.dir/string/string_processing.c.obj CMakeFiles/Lab_17.dir/string/string_processing_test.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Lab_17.dir

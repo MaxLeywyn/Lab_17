@@ -87,8 +87,8 @@ int g(int a) {
 }
 
 void copyIfReverse_test(){
-    char a[] = "Hell0World";
-    char b[11];
+    char a[] = "HeyYo";
+    char b[5];
 
     assert(copyIfReverse(&a[9], &a[0], b, g) == b+1);
 }
