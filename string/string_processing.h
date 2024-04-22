@@ -11,6 +11,12 @@ typedef struct WordDescriptor {
 } WordDescriptor;
 
 
+typedef struct BagOfWords {
+    WordDescriptor words[MAX_N_WORDS_IN_STRING];
+    size_t size;
+} BagOfWords;
+
+
 char* getEndOfString(char *s);
 
 void removeNonLetters(char *s);
@@ -25,7 +31,9 @@ void replace(char *source, char *w1, char *w2);
 
 bool isWordsStandWithOrder(char *s);
 
+void getBagOfWords(BagOfWords *bag, char *s);
 
+void outputBagReverse(BagOfWords *bag);
 
 
 #endif //LAB_17_STRING_PROCESSING_H

@@ -10,7 +10,6 @@
 
 
 
-
 int strlen1(char *s);
 
 size_t strlen2(char *s);

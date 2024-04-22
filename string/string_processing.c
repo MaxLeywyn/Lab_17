@@ -178,11 +178,11 @@ bool isWordsStandWithOrder(char *s) {
 
     while (s != end) {
         WordDescriptor word2;
-        if(getWord(s, &word2)!=0 && areWordsEqual(word,word2)>0){
+        if (getWord(s, &word2) != 0 && areWordsEqual(word, word2) > 0) {
             return 0;
-        } else if(areWordsEqual(word,word2)<=0 && getWord(s, &word2)!=0){
-            word.begin=word2.begin;
-            word.end=word2.end;
+        } else if (areWordsEqual(word, word2) <= 0 && getWord(s, &word2) != 0) {
+            word.begin = word2.begin;
+            word.end = word2.end;
             s += (word.end - word.begin);
         } else
             s++;
@@ -190,6 +190,29 @@ bool isWordsStandWithOrder(char *s) {
     return 1;
 }
 
+
+//7
+void getBagOfWords(BagOfWords *bag, char *s) {
+    char *end = getEndOfString(s);
+    size_t counter = 0;
+    while (getWord(s, &(bag->words[counter]))) {
+        s += (bag->words[counter].end - bag->words[counter].begin) + 1;
+        counter++;
+    }
+    bag->size = counter;
+}
+
+void outputBagReverse(BagOfWords *bag) {
+    for (int i = 0; i < bag->size; ++i) {
+        for (int j = 0; j < (bag->words[i].end - bag->words[i].begin); ++j) {
+            printf("%c", *bag->words[i].begin+j);
+        }
+        printf("\n");
+    }
+}
+
+
+//8
 
 
 
