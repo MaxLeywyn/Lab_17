@@ -12,7 +12,7 @@ void removeExtraSpaces(char *s);
 
 void sortDigitsToEndWithOriginalOrder(char *s);
 
-void addSpacesAccordingByNumbers(char *s);
+void replaceDigitsBySpaces(char *source, char *dest);
 
 
 #endif //LAB_17_STRING_PROCESSING_H

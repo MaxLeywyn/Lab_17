@@ -1,4 +1,6 @@
 #include "string_processing.h"
+#include <memory.h>
+#include <stdlib.h>
 
 //2
 char *getEndOfString(char *s) {
@@ -102,3 +104,22 @@ void sortDigitsToEndWithOriginalOrder(char *s){
 
 
 //4
+void replaceDigitsBySpaces(char *source, char *dest) {
+    size_t i = 0;
+    size_t j = 0;
+
+    while (*source != '\0') {
+        if (isdigit(*(source+i))) {
+            int numSpaces = *(source+i) - '0';
+            for (int k = 0; k < numSpaces && j < MAX_STRING_SIZE-1; k++) {
+                *(dest+(j++)) = ' ';
+            }
+        } else if (j < MAX_STRING_SIZE-1) {
+            *(dest+(j++)) = *(source+i);
+        }
+        i++;
+    }
+    *(dest+j) = '\0';
+}
+
+//5
