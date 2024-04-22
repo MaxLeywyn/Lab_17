@@ -9,11 +9,9 @@ int main() {
 
     SetConsoleOutputCP(CP_UTF8);
 
-    char a[9]="f3j 32 4";
+    char a[15]="abe abe ";
 
-    replace(a,"32","1234");
-
-    printf("%s",a);
+    printf("%d",isWordsStandWithOrder(a));
 
     return 0;
 }

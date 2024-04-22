@@ -34,10 +34,6 @@ void removeExtraSpaces(char *s) {
 }
 
 //3
-typedef struct WordDescriptor {
-    char *begin; // позиция начала слова
-    char *end; // позиция первого символа, после последнего символа
-} WordDescriptor;
 
 
 int getWord(char *beginSearch, WordDescriptor *word) {
@@ -124,7 +120,7 @@ void replaceDigitsBySpaces(char *source, char *dest) {
 //5
 int strcmpN(char *a, char *b, size_t size) {
     for (int i = 0; i < size; ++i) {
-        if(*(a+i)!=*(b+i)){
+        if (*(a + i) != *(b + i)) {
             return 0;
         }
     }
@@ -149,13 +145,52 @@ void replace(char *source, char *w1, char *w2) {
     size_t i = 0;
     size_t j = 0;
     for (i; i < strlen_(readPtr); i++) {
-        if (*(readPtr + i) == *w1 && strcmpN((readPtr + i), w1,w1Size) == 1) {
+        if (*(readPtr + i) == *w1 && strcmpN((readPtr + i), w1, w1Size) == 1) {
             memcpy((recPtr + j), w2, w2Size);
             j += w2Size;
-            i += w1Size-1;
+            i += w1Size - 1;
         } else {
             *(recPtr + (j++)) = *(readPtr + i);
         }
     }
     *(recPtr + j) = '\0';
 }
+
+
+//6
+int areWordsEqual(WordDescriptor w1, WordDescriptor w2) {
+    size_t size_1 = w1.end - w1.begin;
+    if (size_1 == (w2.end - w2.begin))
+        return 0;
+    size_t i = 0;
+    while (*(w1.begin + i) == *(w2.begin + i) && i != size_1) {
+        i++;
+    }
+    return *w1.begin - *w2.begin;//-x - earlier
+}
+
+
+bool isWordsStandWithOrder(char *s) {
+    WordDescriptor word;// 1 -cur, 2 - next,
+    char *end = getEndOfString(s);
+    getWord(s, &word);
+    s += (word.end - word.begin);
+
+    while (s != end) {
+        WordDescriptor word2;
+        if(getWord(s, &word2)!=0 && areWordsEqual(word,word2)>0){
+            return 0;
+        } else if(areWordsEqual(word,word2)<=0 && getWord(s, &word2)!=0){
+            word.begin=word2.begin;
+            word.end=word2.end;
+            s += (word.end - word.begin);
+        } else
+            s++;
+    }
+    return 1;
+}
+
+
+
+
+

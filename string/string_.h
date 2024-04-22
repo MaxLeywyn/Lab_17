@@ -38,4 +38,6 @@ char *copyIfReverse(char *rbeginSource, const char *rendSource, char *beginDesti
 
 
 
+
+
 #endif //LAB_17_STRING__H
