@@ -14,3 +14,10 @@ void assertString(const char *expected, char *got,
     } else
         fprintf(stderr, "%s - OK\n", funcName);
 }
+
+void removeExtraSpaces_test(){
+    char a[11]="  3 4g |8";
+    removeExtraSpaces(a);
+    char b[11]="3 4g |8";
+    ASSERT_STRING(b,a);
+}

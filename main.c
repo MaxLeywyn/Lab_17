@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "string/string_processing.h"
-
+#include "string/string_processing_test.h"
 #include <windows.h>
 
 
@@ -9,9 +9,9 @@ int main() {
 
     SetConsoleOutputCP(CP_UTF8);
 
-    char a[10]=" 3 4g |83";
+    char a[14]="f5j ";
 
-    removeNonLetters(a);
+    addSpacesAccordingByNumbers(a);
 
     printf("%s",a);
 

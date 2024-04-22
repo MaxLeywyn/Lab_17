@@ -44,7 +44,7 @@ char *findNonSpace(char *begin) {
 
 char *findSpace(char *begin) {
     char *end = begin;
-    while (!(isspace(*end)) && *end != '\0') {
+    while (!isspace(*end) && *end != '\0') {
         end++;
     }
     return end;
