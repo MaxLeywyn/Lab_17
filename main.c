@@ -9,12 +9,11 @@ int main() {
 
     SetConsoleOutputCP(CP_UTF8);
 
-    char a[5]="f2j ";
-    char b[10];
+    char a[9]="f3j 32 4";
 
-    replaceDigitsBySpaces(a,b);
+    replace(a,"32","1234");
 
-    printf("%s",b);
+    printf("%s",a);
 
     return 0;
 }

@@ -19,19 +19,18 @@ void removeNonLetters(char *s) {
 void removeExtraSpaces(char *s) {
     size_t i = 0;
     size_t j = 0;
-    size_t spaces =0;
+    size_t spaces = 0;
 
-    for (i; *(s+i)!='\0'; i++) {
-        if(*(s+i)!=' '){
-            *(s+(j++)) = *(s+i);
-            spaces=0;
-        } else
-            if(!spaces && j>0){
-                *(s+(j++)) = ' ';
-                spaces = 1;
-            }
+    for (i; *(s + i) != '\0'; i++) {
+        if (*(s + i) != ' ') {
+            *(s + (j++)) = *(s + i);
+            spaces = 0;
+        } else if (!spaces && j > 0) {
+            *(s + (j++)) = ' ';
+            spaces = 1;
+        }
     }
-    *(s+j) = '\0';
+    *(s + j) = '\0';
 }
 
 //3
@@ -62,12 +61,12 @@ void digitToStart(WordDescriptor word) {
     copyIf(_stringBuffer, endStringBuffer, recPosition, isalpha);
 }
 
-bool getWordReverse(char *rbegin, char *rend, WordDescriptor *word){
-    word->end = findNonSpaceReverse(rbegin,rend)+1;
-    if(word->end == rbegin){
+bool getWordReverse(char *rbegin, char *rend, WordDescriptor *word) {
+    word->end = findNonSpaceReverse(rbegin, rend) + 1;
+    if (word->end == rbegin) {
         return 0;
     }
-    word->begin = findSpaceReverse(word->end, rend)+1;
+    word->begin = findSpaceReverse(word->end, rend) + 1;
     return 1;
 }
 
@@ -82,20 +81,20 @@ void digitToEndWithOriginalOrder(WordDescriptor word) {
                                  _stringBuffer);
     char *recPosition = copyIf(_stringBuffer,
                                endStringBuffer,
-                                      word.begin, isalpha);
+                               word.begin, isalpha);
     copyIf(_stringBuffer, endStringBuffer, recPosition, isdigit);
 }
 
 
-void sortDigitsToEndWithOriginalOrder(char *s){
+void sortDigitsToEndWithOriginalOrder(char *s) {
     WordDescriptor word;
-    while (*s!='\0') {
+    while (*s != '\0') {
         if (getWord(s, &word) && (!isspace(*s))) {
             digitToEndWithOriginalOrder(word);
             printf("%d ", (word.end - word.begin));
             s += (word.end - word.begin);
         }
-        if(isspace(*s))
+        if (isspace(*s))
             s++;
     }
 }
@@ -109,17 +108,54 @@ void replaceDigitsBySpaces(char *source, char *dest) {
     size_t j = 0;
 
     while (*source != '\0') {
-        if (isdigit(*(source+i))) {
-            int numSpaces = *(source+i) - '0';
-            for (int k = 0; k < numSpaces && j < MAX_STRING_SIZE-1; k++) {
-                *(dest+(j++)) = ' ';
+        if (isdigit(*(source + i))) {
+            int numSpaces = *(source + i) - '0';
+            for (int k = 0; k < numSpaces && j < MAX_STRING_SIZE - 1; k++) {
+                *(dest + (j++)) = ' ';
             }
-        } else if (j < MAX_STRING_SIZE-1) {
-            *(dest+(j++)) = *(source+i);
+        } else if (j < MAX_STRING_SIZE - 1) {
+            *(dest + (j++)) = *(source + i);
         }
         i++;
     }
-    *(dest+j) = '\0';
+    *(dest + j) = '\0';
 }
 
 //5
+int strcmpN(char *a, char *b, size_t size) {
+    for (int i = 0; i < size; ++i) {
+        if(*(a+i)!=*(b+i)){
+            return 0;
+        }
+    }
+    return 1;
+}
+
+
+void replace(char *source, char *w1, char *w2) {
+    size_t w1Size = strlen_(w1);
+    size_t w2Size = strlen_(w2);
+    printf("%d %d ", w1Size, w2Size);
+    char *readPtr, *recPtr;
+    if (w1Size >= w2Size) {
+        readPtr = source;
+        recPtr = source;
+    } else {
+        copy(source, getEndOfString(source), _stringBuffer);
+        readPtr = _stringBuffer;
+        recPtr = source;
+    }
+
+    size_t i = 0;
+    size_t j = 0;
+    for (i; i < strlen_(readPtr); i++) {
+        if (*(readPtr + i) == *w1 && strcmpN((readPtr + i), w1,w1Size) == 1) {
+            memcpy((recPtr + j), w2, w2Size);
+            j += w2Size;
+            i += w1Size-1;
+        } else {
+            *(recPtr + (j++)) = *(readPtr + i);
+        }
+    }
+    *(recPtr + j) = '\0';
+}
