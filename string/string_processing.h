@@ -16,6 +16,14 @@ typedef struct BagOfWords {
     size_t size;
 } BagOfWords;
 
+typedef enum WordBeforeFirstWordWithAReturnCode {
+    FIRST_WORD_WITH_A,
+    NOT_FOUND_A_WORD_WITH_A,
+    WORD_FOUND,
+    EMPTY_STRING
+} WordBeforeFirstWordWithAReturnCode;
+
+bool getWordReverse(char *rbegin, char *rend, WordDescriptor *word);
 
 char* getEndOfString(char *s);
 
@@ -38,5 +46,10 @@ void outputBagReverse(BagOfWords *bag);
 int countPalindromicWords(char *s);
 
 void createNewFlipFlopStr(char *s1, char *s2, char *new);
+
+void reverseWordOrder(char *s);
+
+WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordWithA(
+        char *s, WordDescriptor *w);
 
 #endif //LAB_17_STRING_PROCESSING_H

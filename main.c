@@ -10,13 +10,15 @@ int main() {
 
     SetConsoleOutputCP(CP_UTF8);
 
-    char a[20]="ae rgr aere";
+    char a[15]="ae rgr rere";
     char b[20]="rr aaa f";
     char c[45];
 
-    createNewFlipFlopStr(a,b,c);
+    WordDescriptor word;
 
-    printf("%s",c);
+    reverseWordOrder(b);
+
+    printf("%s",b);
 
     return 0;
 

@@ -59,10 +59,12 @@ void digitToStart(WordDescriptor word) {
 
 bool getWordReverse(char *rbegin, char *rend, WordDescriptor *word) {
     word->end = findNonSpaceReverse(rbegin, rend) + 1;
-    if (word->end == rbegin) {
+
+    if ((word->end - rend) < 0) {
         return 0;
     }
-    word->begin = findSpaceReverse(word->end, rend) + 1;
+    word->begin = (findSpaceReverse(word->end, rend) + 1);
+
     return 1;
 }
 
@@ -216,7 +218,7 @@ void outputBagReverse(BagOfWords *bag) {
 //8
 char *findLetter(char *begin) {
     char *end = begin;
-    while((!isalpha(*end)) && *end != '\0') {
+    while ((!isalpha(*end)) && *end != '\0') {
         end++;
     }
     return end;
@@ -237,60 +239,87 @@ int getWordWithComma(char *beginSearch, WordDescriptor *word) {
     word->end = findComma(word->begin) - 1;
     return 1;
 }
+
 //char a[20]="abe,abbba,ava";
 int countPalindromicWords(char *s) {
     int counter = 0;
     WordDescriptor word1;
-    while(getWordWithComma(s,&word1)){
+    while (getWordWithComma(s, &word1)) {
         int i = 0, c = 0;
-        int half_size = (word1.end-word1.begin+1)/2;
-        printf("%s",word1.begin);
-        printf("  %d  ",half_size);
+        int half_size = (word1.end - word1.begin + 1) / 2;
+        printf("%s", word1.begin);
+        printf("  %d  ", half_size);
 
         for (; i < half_size; i++) {
-            if(*(word1.begin+i)==*(word1.end-i))
+            if (*(word1.begin + i) == *(word1.end - i))
                 c++;
-            printf("  %d  ",c);
+            printf("  %d  ", c);
         }
-        if(c==half_size){
+        if (c == half_size) {
             counter++;
         }
-        printf("  %d\n",counter);
-        s+=((word1.end+1)-(word1.begin-1));
+        printf("  %d\n", counter);
+        s += ((word1.end + 1) - (word1.begin - 1));
     }
 
     return counter;
 }
 
 //9
-void createNewFlipFlopStr(char *s1, char *s2, char *new){
+void createNewFlipFlopStr(char *s1, char *s2, char *new) {
     WordDescriptor word1, word2;
     bool isW1Found, isW2Found;
     char *beginSearch1 = s1, *beginSearch2 = s2;
     while ((isW1Found = getWord(beginSearch1, &word1)),
-            (isW2Found = getWord(beginSearch2,&word2)),
+            (isW2Found = getWord(beginSearch2, &word2)),
             isW1Found || isW2Found) {
         if (isW1Found) {
             copy(word1.begin, word1.end, new);
             beginSearch1 += (word1.end - word1.begin + 1);
             new += (word1.end - word1.begin);
-            *new=' ';
+            *new = ' ';
             new++;
         }
         if (isW2Found) {
             copy(word2.begin, word2.end, new);
             beginSearch2 += (word2.end - word2.begin + 1);
             new += (word2.end - word2.begin);
-            *new=' ';
+            *new = ' ';
             new++;
         }
     }
-    *new='\0';
+    *new = '\0';
 }
 
 //10
-void reverseWords(char *s){
-    copy(s, getEndOfString(s),_stringBuffer);
+void reverseWordOrder(char *s) {
+    char *start = _stringBuffer;
+    char *end = copy(s, getEndOfString(s), _stringBuffer);
+    WordDescriptor word;
+    while (getWordReverse(end, start, &word)) {
+        s = copy(word.begin, word.end, s);
+        end = word.begin - 1;
+        *s = ' ';
+        s++;
+    }
+    if (s != start) {
+        s--;
+    }
+    *s = '\0';
+}
+
+//11
+bool searchAInWord(WordDescriptor word) {
+    while (word.begin != word.end) {
+        if (*word.begin == 'A' || *word.begin == 'a') {
+            return true;
+        }
+        word.begin++;
+    }
+    return false;
+}
+
+WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordWithA(char *s, WordDescriptor *w){
 
 }
 
