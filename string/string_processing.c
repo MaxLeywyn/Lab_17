@@ -293,20 +293,18 @@ void createNewFlipFlopStr(char *s1, char *s2, char *new) {
 
 //10
 void reverseWordOrder(char *s) {
-    char *start = _stringBuffer;
+    char *begin = _stringBuffer;
     char *end = copy(s, getEndOfString(s), _stringBuffer);
     WordDescriptor word;
-    while (getWordReverse(end, start, &word)) {
+    while (getWordReverse(end, begin, &word)) {
         s = copy(word.begin, word.end, s);
         end = word.begin - 1;
         *s = ' ';
         s++;
     }
-    if (s != start) {
-        s--;
-    }
     *s = '\0';
 }
+
 
 //11
 bool searchAInWord(WordDescriptor word) {
@@ -320,6 +318,31 @@ bool searchAInWord(WordDescriptor word) {
 }
 
 WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordWithA(char *s, WordDescriptor *w){
-
+    WordDescriptor word, wordPrev;
+    bool isFirst = 1;
+    while (getWord(s, &word)){
+        if(searchAInWord(word) && isFirst){
+            w->begin=word.begin;
+            w->end=word.end;
+            return FIRST_WORD_WITH_A;
+        }else if(searchAInWord(word) && (!isFirst)){
+            w->begin=wordPrev.begin;
+            w->end=wordPrev.end;
+            return WORD_FOUND;
+        }else if(!searchAInWord(word)){
+            isFirst=0;
+            wordPrev.begin=word.begin;
+            wordPrev.end=word.end;
+            s+=(word.end-word.begin);
+        }
+    }
+    if(isFirst){
+        return EMPTY_STRING;
+    } else{
+        return NOT_FOUND_A_WORD_WITH_A;
+    }
 }
+
+//
+
 
