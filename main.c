@@ -10,9 +10,13 @@ int main() {
 
     SetConsoleOutputCP(CP_UTF8);
 
-    char a[20]="abe,abbba,ava";
+    char a[20]="ae rgr aere";
+    char b[20]="rr aaa f";
+    char c[45];
 
-    printf("%d",countPalindromicWords(a));
+    createNewFlipFlopStr(a,b,c);
+
+    printf("%s",c);
 
     return 0;
 

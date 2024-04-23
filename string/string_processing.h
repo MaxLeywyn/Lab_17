@@ -37,5 +37,6 @@ void outputBagReverse(BagOfWords *bag);
 
 int countPalindromicWords(char *s);
 
+void createNewFlipFlopStr(char *s1, char *s2, char *new);
 
 #endif //LAB_17_STRING_PROCESSING_H
