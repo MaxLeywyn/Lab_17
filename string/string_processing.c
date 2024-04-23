@@ -317,32 +317,69 @@ bool searchAInWord(WordDescriptor word) {
     return false;
 }
 
-WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordWithA(char *s, WordDescriptor *w){
+WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordWithA(char *s, WordDescriptor *w) {
     WordDescriptor word, wordPrev;
     bool isFirst = 1;
-    while (getWord(s, &word)){
-        if(searchAInWord(word) && isFirst){
-            w->begin=word.begin;
-            w->end=word.end;
+    while (getWord(s, &word)) {
+        if (searchAInWord(word) && isFirst) {
+            w->begin = word.begin;
+            w->end = word.end;
             return FIRST_WORD_WITH_A;
-        }else if(searchAInWord(word) && (!isFirst)){
-            w->begin=wordPrev.begin;
-            w->end=wordPrev.end;
+        } else if (searchAInWord(word) && (!isFirst)) {
+            w->begin = wordPrev.begin;
+            w->end = wordPrev.end;
             return WORD_FOUND;
-        }else if(!searchAInWord(word)){
-            isFirst=0;
-            wordPrev.begin=word.begin;
-            wordPrev.end=word.end;
-            s+=(word.end-word.begin);
+        } else if (!searchAInWord(word)) {
+            isFirst = 0;
+            wordPrev.begin = word.begin;
+            wordPrev.end = word.end;
+            s += (word.end - word.begin);
         }
     }
-    if(isFirst){
+    if (isFirst) {
         return EMPTY_STRING;
-    } else{
+    } else {
         return NOT_FOUND_A_WORD_WITH_A;
     }
 }
 
-//
+//12
+void wordDescriptorToString(WordDescriptor word, char *destination) {
+    destination = copy(word.begin, word.end, destination);
+    *destination = '\0';
+}
+//додел
+void getLastWordFromFirstThatInSecond(char *s1, char *s2, WordDescriptor *word) {
+    BagOfWords bag1, bag2;
+    WordDescriptor wordLast;
+    getBagOfWords(&bag1,s1);
+    getBagOfWords(&bag2,s2);
+    for (int i = 0; i < bag1.size; i++) {
+        for (int j = 0; j < bag2.size; j++) {
+            if(areWordsEqual(bag1.words[i],bag2.words[j])){
+                wordLast.begin=bag1.words[i].begin;
+                wordLast.end=bag1.words[i].end;
+            }
+        }
+    }
+    word->begin=wordLast.begin;
+    word->end=wordLast.end;
+}
 
+//13
+bool hasStringSameWords(char *s){
+    BagOfWords bag1, bag2;
+    getBagOfWords(&bag1,s);
+    getBagOfWords(&bag2,s);
+    for (int i = 0; i < bag1.size; i++) {
+        for (int j = 0; j < bag2.size; j++) {
+            if(areWordsEqual(bag1.words[i],bag2.words[j])){
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+
+//
 

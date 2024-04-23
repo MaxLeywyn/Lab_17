@@ -52,4 +52,9 @@ void reverseWordOrder(char *s);
 WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordWithA(
         char *s, WordDescriptor *w);
 
+void getLastWordFromFirstThatInSecond(char *s1, char *s2, WordDescriptor *word);
+
+void wordDescriptorToString(WordDescriptor word, char *destination);
+
+
 #endif //LAB_17_STRING_PROCESSING_H
