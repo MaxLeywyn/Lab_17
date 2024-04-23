@@ -10,12 +10,10 @@ int main() {
 
     SetConsoleOutputCP(CP_UTF8);
 
-    char a[15]="abe abe fde ";
+    char a[20]="abe,abbba,ava";
 
-    getBagOfWords(&_bag,a);
-
-    outputBagReverse(&_bag);
-
+    printf("%d",countPalindromicWords(a));
 
     return 0;
+
 }

@@ -35,5 +35,7 @@ void getBagOfWords(BagOfWords *bag, char *s);
 
 void outputBagReverse(BagOfWords *bag);
 
+int countPalindromicWords(char *s);
+
 
 #endif //LAB_17_STRING_PROCESSING_H

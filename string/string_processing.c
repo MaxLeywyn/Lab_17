@@ -202,10 +202,11 @@ void getBagOfWords(BagOfWords *bag, char *s) {
     bag->size = counter;
 }
 
+
 void outputBagReverse(BagOfWords *bag) {
     for (int i = 0; i < bag->size; ++i) {
         for (int j = 0; j < (bag->words[i].end - bag->words[i].begin); ++j) {
-            printf("%c", *bag->words[i].begin+j);
+            printf("%c", *bag->words[i].begin + j);
         }
         printf("\n");
     }
@@ -213,7 +214,53 @@ void outputBagReverse(BagOfWords *bag) {
 
 
 //8
+char *findLetter(char *begin) {
+    char *end = begin;
+    while((!isalpha(*end)) && *end != '\0') {
+        end++;
+    }
+    return end;
+}
 
+char *findComma(char *begin) {
+    char *end = begin;
+    while (*end != ',' && *end != '\0') {
+        end++;
+    }
+    return end;
+}
+
+int getWordWithComma(char *beginSearch, WordDescriptor *word) {
+    word->begin = findLetter(beginSearch);
+    if (*word->begin == '\0')
+        return 0;
+    word->end = findComma(word->begin) - 1;
+    return 1;
+}
+
+int countPalindromicWords(char *s) {
+    int counter = 0;
+    WordDescriptor word1;
+    while(getWordWithComma(s,&word1)){
+        int i = 0, c = 0;
+        int half_size = (word1.end-word1.begin+1)/2;
+        printf("%s",word1.begin);
+        printf("  %d  ",half_size);
+
+        for (; i < half_size; i++) {
+            if(*(word1.begin+i)==*(word1.end-i))
+                c++;
+            printf("  %d  ",c);
+        }
+        if(c==half_size){
+            counter++;
+        }
+        printf("  %d\n",counter);
+        s+=((word1.end+1)-(word1.begin-1));
+    }
+
+    return counter;
+}
 
 
 
