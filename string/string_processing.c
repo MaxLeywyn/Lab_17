@@ -348,32 +348,33 @@ void wordDescriptorToString(WordDescriptor word, char *destination) {
     destination = copy(word.begin, word.end, destination);
     *destination = '\0';
 }
-//додел
+
+
 void getLastWordFromFirstThatInSecond(char *s1, char *s2, WordDescriptor *word) {
     BagOfWords bag1, bag2;
     WordDescriptor wordLast;
-    getBagOfWords(&bag1,s1);
-    getBagOfWords(&bag2,s2);
+    getBagOfWords(&bag1, s1);
+    getBagOfWords(&bag2, s2);
     for (int i = 0; i < bag1.size; i++) {
         for (int j = 0; j < bag2.size; j++) {
-            if(areWordsEqual(bag1.words[i],bag2.words[j])){
-                wordLast.begin=bag1.words[i].begin;
-                wordLast.end=bag1.words[i].end;
+            if (areWordsEqual(bag1.words[i], bag2.words[j])) {
+                wordLast.begin = bag1.words[i].begin;
+                wordLast.end = bag1.words[i].end;
             }
         }
     }
-    word->begin=wordLast.begin;
-    word->end=wordLast.end;
+    word->begin = wordLast.begin;
+    word->end = wordLast.end;
 }
 
+
 //13
-bool hasStringSameWords(char *s){
-    BagOfWords bag1, bag2;
-    getBagOfWords(&bag1,s);
-    getBagOfWords(&bag2,s);
+bool hasStringSameWords(char *s) {
+    BagOfWords bag1;
+    getBagOfWords(&bag1, s);
     for (int i = 0; i < bag1.size; i++) {
-        for (int j = 0; j < bag2.size; j++) {
-            if(areWordsEqual(bag1.words[i],bag2.words[j])){
+        for (int j = 0; j < bag1.size; j++) {
+            if (areWordsEqual(bag1.words[i], bag1.words[j]) && (bag1.words[i].begin!=bag1.words[j].begin)) {
                 return 1;
             }
         }
@@ -381,5 +382,25 @@ bool hasStringSameWords(char *s){
     return 0;
 }
 
-//
+//14
+
+
+
+//15
+void deleteAllLikeEndWords(char *s) {
+    BagOfWords bag;
+    getBagOfWords(&bag, s);
+    for (int i = 0; i < bag.size - 1; ++i) {
+        if (!areWordsEqual(bag.words[i], bag.words[bag.size - 1])) {
+            s = copy(bag.words[i].begin, bag.words[i].end, s);
+            *s = ' ';
+            s++;
+        }
+    }
+    *s = '\0';
+}
+
+//16
+void
+
 

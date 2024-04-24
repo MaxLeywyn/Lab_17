@@ -16,9 +16,9 @@ int main() {
 
     WordDescriptor word;
 
-    getLastWordFromFirstThatInSecond(a,b,&word);
+    deleteAllLikeEndWords(a);
 
-    printf("%s",word.begin);
+    printf("%s",a);
 
     return 0;
 
