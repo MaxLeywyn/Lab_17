@@ -10,7 +10,7 @@ int main() {
 
     SetConsoleOutputCP(CP_UTF8);
 
-    char a[14]="brtea";
+    char a[14]="wewea";
     char b[9]="f aa t";
     char c[45];
 

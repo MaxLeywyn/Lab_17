@@ -384,22 +384,20 @@ bool hasStringSameWords(char *s) {
 
 //14
 void sortWordsLetters(WordDescriptor *word) {
-    char *begin = _stringBuffer;
-    copy(word->begin, word->end, _stringBuffer);
     int size = (word->end - word->begin);
-    printf("%d", size);
 
     for (int i = 0; i < size; i++) {
-        int j = i;
-        char *tmp = (word->begin + i);
-        while (j < size) {
-            j++;
-            if (*(word->begin + i) > *(begin + j)){
-                tmp = (begin + j);
-                break;
+        char *swap_pos = (word->begin + i);
+        for (int j = i + 1; j < size; j++) {
+            if (*(word->begin + i) > *(word->begin + j)) {
+                swap_pos=(word->begin + j);
             }
         }
+        char temp = *swap_pos;
+        *swap_pos = *(word->begin + i);
+        *(word->begin + i)=temp;
     }
+
 }
 
 bool hasTwoSameSymbolsWords(char *s1, char *s2) {
