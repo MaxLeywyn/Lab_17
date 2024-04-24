@@ -23,6 +23,8 @@ typedef enum WordBeforeFirstWordWithAReturnCode {
     EMPTY_STRING
 } WordBeforeFirstWordWithAReturnCode;
 
+int getWord(char *beginSearch, WordDescriptor *word);
+
 bool getWordReverse(char *rbegin, char *rend, WordDescriptor *word);
 
 char* getEndOfString(char *s);
@@ -58,7 +60,11 @@ void wordDescriptorToString(WordDescriptor word, char *destination);
 
 bool hasStringSameWords(char *s);
 
+void sortWordsLetters(WordDescriptor *word);
+
 void deleteAllLikeEndWords(char *s);
+
+void findWordBeforeFirstBothInclusion(char *s1, char *s2, WordDescriptor *word);
 
 
 #endif //LAB_17_STRING_PROCESSING_H

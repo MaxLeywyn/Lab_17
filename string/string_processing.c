@@ -374,7 +374,7 @@ bool hasStringSameWords(char *s) {
     getBagOfWords(&bag1, s);
     for (int i = 0; i < bag1.size; i++) {
         for (int j = 0; j < bag1.size; j++) {
-            if (areWordsEqual(bag1.words[i], bag1.words[j]) && (bag1.words[i].begin!=bag1.words[j].begin)) {
+            if (areWordsEqual(bag1.words[i], bag1.words[j]) && (bag1.words[i].begin != bag1.words[j].begin)) {
                 return 1;
             }
         }
@@ -383,7 +383,43 @@ bool hasStringSameWords(char *s) {
 }
 
 //14
+void sortWordsLetters(WordDescriptor *word) {
+    char *begin = _stringBuffer;
+    copy(word->begin, word->end, _stringBuffer);
+    int size = (word->end - word->begin);
+    printf("%d", size);
 
+    for (int i = 0; i < size; i++) {
+        int j = i;
+        char *tmp = (word->begin + i);
+        while (j < size) {
+            j++;
+            if (*(word->begin + i) > *(begin + j)){
+                tmp = (begin + j);
+                break;
+            }
+        }
+    }
+}
+
+bool hasTwoSameSymbolsWords(char *s1, char *s2) {
+    BagOfWords bag1, bag2;
+    getBagOfWords(&bag1, s1);
+    getBagOfWords(&bag2, s2);
+    for (int i = 0; i < bag1.size; ++i) {
+        sortWordsLetters(&bag1.words[i]);
+    }
+    for (int i = 0; i < bag2.size; ++i) {
+        sortWordsLetters(&bag2.words[i]);
+    }
+    for (int i = 0; i < bag1.size; i++) {
+        for (int j = 0; j < bag2.size; j++) {
+            if (areWordsEqual(bag1.words[i], bag2.words[i]))
+                return 1;
+        }
+    }
+    return 0;
+}
 
 
 //15
@@ -401,6 +437,29 @@ void deleteAllLikeEndWords(char *s) {
 }
 
 //16
-void
+void findWordBeforeFirstBothInclusion(char *s1, char *s2, WordDescriptor *word) {
+    BagOfWords bag1, bag2;
+    WordDescriptor resWord;
+    getBagOfWords(&bag1, s1);
+    getBagOfWords(&bag2, s2);
+    bool isWordFound = false;
+    while (!isWordFound) {
+        for (int i = 0; i < bag1.size; i++) {
+            for (int j = 0; j < bag2.size; j++) {
+                if (areWordsEqual(bag1.words[i], bag2.words[j])) {
+                    if (i == 0)
+                        i++;
+                    resWord.begin = bag1.words[i - 1].begin;
+                    resWord.end = bag1.words[i - 1].end;
+                    isWordFound = true;
+                }
+            }
+        }
+    }
+    word->begin = resWord.begin;
+    word->end = resWord.end;
+}
+
+//17
 
 
