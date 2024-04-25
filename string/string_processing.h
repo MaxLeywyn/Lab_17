@@ -72,5 +72,7 @@ bool isWithoutRepeatSymbols(WordDescriptor *word);
 
 void completeSmallestString(char *s1, char *s2);
 
+bool allLettersWordInStr(WordDescriptor word, char *s);
+
 
 #endif //LAB_17_STRING_PROCESSING_H
