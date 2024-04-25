@@ -10,17 +10,18 @@ int main() {
 
     SetConsoleOutputCP(CP_UTF8);
 
-    char a[14]="wewea";
-    char b[9]="f aa t";
+    char a[20]="wrwr tre gtr ";
+    char b[20]="f aa t ytu ";
     char c[45];
 
     WordDescriptor word;
 
     getWord(a,&word);
 
-    sortWordsLetters(&word);
 
-    printf("%s",word.begin);
+
+    printf("%s   ",a);
+    printf("%d", isWithoutRepeatSymbols(&word));
 
     return 0;
 

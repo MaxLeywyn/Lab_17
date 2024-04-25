@@ -390,12 +390,12 @@ void sortWordsLetters(WordDescriptor *word) {
         char *swap_pos = (word->begin + i);
         for (int j = i + 1; j < size; j++) {
             if (*(word->begin + i) > *(word->begin + j)) {
-                swap_pos=(word->begin + j);
+                swap_pos = (word->begin + j);
             }
         }
         char temp = *swap_pos;
         *swap_pos = *(word->begin + i);
-        *(word->begin + i)=temp;
+        *(word->begin + i) = temp;
     }
 
 }
@@ -458,6 +458,64 @@ void findWordBeforeFirstBothInclusion(char *s1, char *s2, WordDescriptor *word) 
     word->end = resWord.end;
 }
 
+
 //17
+bool isWithoutRepeatSymbols(WordDescriptor *word){
+    sortWordsLetters(word);
+    int size = (word->end-word->begin);
+    for (int i = 0; i < size-1; i++) {
+        if(*(word->begin+i)==*(word->begin+i+1)){
+            return 0;
+        }
+    }
+    return 1;
+}
+
+void deleteWordsWithRepeatSymbols(char *s) {
+    BagOfWords bag_sort;
+    getBagOfWords(&bag_sort, s);
+
+    for (int i = 0; i < bag_sort.size; i++) {
+        if (isWithoutRepeatSymbols(&bag_sort.words[i])) {
+            s = copy(bag_sort.words[i].begin, bag_sort.words[i].end, s);
+            *s = ' ';
+            s++;
+        }
+    }
+    *s = '\0';
+}
 
 
+//18
+void completeSmallestString(char *s1, char *s2){
+    BagOfWords bag1, bag2;
+    char *end2 = getEndOfString(s2);
+    char *end1 = getEndOfString(s1);
+    getBagOfWords(&bag1, s1);
+    getBagOfWords(&bag2, s2);
+    int var = 0;
+    if(bag1.size > bag2.size){
+        var = 1;
+        int diff = (bag1.size - bag2.size);
+        for (int i = 0; i < diff; i++) {
+            end2 = copy(bag1.words[bag2.size+i].begin,bag1.words[bag2.size+i].end,end2);
+            *end2=' ';
+            end2++;
+        }
+    }else if (bag1.size < bag2.size){
+        var = 2;
+        int diff = (bag2.size - bag1.size);
+        for (int i = 0; i < diff; i++) {
+            end1 = copy(bag2.words[bag1.size+i].begin,bag2.words[bag1.size+i].end,end1);
+            *end1=' ';
+            end1++;
+        }
+    }
+    if(var==2)
+        *end1='\0';
+    else if(var==1)
+        *end2='\0';
+}
+
+
+//19

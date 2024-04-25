@@ -66,5 +66,11 @@ void deleteAllLikeEndWords(char *s);
 
 void findWordBeforeFirstBothInclusion(char *s1, char *s2, WordDescriptor *word);
 
+void deleteWordsWithRepeatSymbols(char*s);
+
+bool isWithoutRepeatSymbols(WordDescriptor *word);
+
+void completeSmallestString(char *s1, char *s2);
+
 
 #endif //LAB_17_STRING_PROCESSING_H
