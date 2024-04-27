@@ -23,11 +23,12 @@ typedef enum WordBeforeFirstWordWithAReturnCode {
     EMPTY_STRING
 } WordBeforeFirstWordWithAReturnCode;
 
+
 int getWord(char *beginSearch, WordDescriptor *word);
 
 bool getWordReverse(char *rbegin, char *rend, WordDescriptor *word);
 
-char* getEndOfString(char *s);
+char *getEndOfString(char *s);
 
 void removeNonLetters(char *s);
 
@@ -58,7 +59,11 @@ void getLastWordFromFirstThatInSecond(char *s1, char *s2, WordDescriptor *word);
 
 void wordDescriptorToString(WordDescriptor word, char *destination);
 
+int areWordsEqual(WordDescriptor w1, WordDescriptor w2);
+
 bool hasStringSameWords(char *s);
+
+bool hasTwoSameSymbolsWords(char *s1);
 
 void sortWordsLetters(WordDescriptor *word);
 
@@ -66,7 +71,7 @@ void deleteAllLikeEndWords(char *s);
 
 void findWordBeforeFirstBothInclusion(char *s1, char *s2, WordDescriptor *word);
 
-void deleteWordsWithRepeatSymbols(char*s);
+void deleteWordsWithRepeatSymbols(char *s);
 
 bool isWithoutRepeatSymbols(WordDescriptor *word);
 

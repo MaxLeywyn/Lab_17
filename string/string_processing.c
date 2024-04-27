@@ -2,6 +2,11 @@
 #include <memory.h>
 #include <stdlib.h>
 
+BagOfWords _bag;
+
+char _stringBuffer[MAX_STRING_SIZE + 1];
+
+
 //2
 char *getEndOfString(char *s) {
     while (*s != '\0')
@@ -43,9 +48,6 @@ int getWord(char *beginSearch, WordDescriptor *word) {
     word->end = findSpace(word->begin);
     return 1;
 }
-
-
-char _stringBuffer[MAX_STRING_SIZE + 1];
 
 
 void digitToStart(WordDescriptor word) {
@@ -204,7 +206,6 @@ void getBagOfWords(BagOfWords *bag, char *s) {
     bag->size = counter;
 }
 
-
 void outputBagReverse(BagOfWords *bag) {
     for (int i = 0; i < bag->size; ++i) {
         for (int j = 0; j < (bag->words[i].end - bag->words[i].begin); ++j) {
@@ -240,7 +241,7 @@ int getWordWithComma(char *beginSearch, WordDescriptor *word) {
     return 1;
 }
 
-//char a[20]="abe,abbba,ava";
+
 int countPalindromicWords(char *s) {
     int counter = 0;
     WordDescriptor word1;
@@ -299,7 +300,7 @@ void reverseWordOrder(char *s) {
     while (getWordReverse(end, begin, &word)) {
         s = copy(word.begin, word.end, s);
         end = word.begin - 1;
-        *s = ' ';
+        *s = ',';
         s++;
     }
     *s = '\0';
@@ -374,7 +375,7 @@ bool hasStringSameWords(char *s) {
     getBagOfWords(&bag1, s);
     for (int i = 0; i < bag1.size; i++) {
         for (int j = 0; j < bag1.size; j++) {
-            if (areWordsEqual(bag1.words[i], bag1.words[j]) && (bag1.words[i].begin != bag1.words[j].begin)) {
+            if (areWordsEqual(bag1.words[i], bag1.words[j]) && i != j) {
                 return 1;
             }
         }
@@ -400,10 +401,10 @@ void sortWordsLetters(WordDescriptor *word) {
 
 }
 
-bool hasTwoSameSymbolsWords(char *s1, char *s2) {
+bool hasTwoSameSymbolsWords(char *s1) {
     BagOfWords bag1, bag2;
     getBagOfWords(&bag1, s1);
-    getBagOfWords(&bag2, s2);
+    getBagOfWords(&bag2, s1);
     for (int i = 0; i < bag1.size; ++i) {
         sortWordsLetters(&bag1.words[i]);
     }
@@ -424,7 +425,7 @@ bool hasTwoSameSymbolsWords(char *s1, char *s2) {
 void deleteAllLikeEndWords(char *s) {
     BagOfWords bag;
     getBagOfWords(&bag, s);
-    for (int i = 0; i < bag.size - 1; ++i) {
+    for (int i = 0; i < bag.size - 1; i++) {
         if (!areWordsEqual(bag.words[i], bag.words[bag.size - 1])) {
             s = copy(bag.words[i].begin, bag.words[i].end, s);
             *s = ' ';
@@ -523,7 +524,7 @@ void completeSmallestString(char *s1, char *s2) {
 
 
 //19
-int compareChars(const void * x1, const void * x2) {
+int compareChars(const void *x1, const void *x2) {
     return (*(char *) x1 - *(char *) x2);
 }
 
@@ -538,9 +539,9 @@ bool allLettersWordInStr(WordDescriptor word, char *s) {
     while (word.begin != word.end && s != sEnd) {
         if (*word.begin < *s) {
             return false;
-        }else if (*word.begin > *s) {
+        } else if (*word.begin > *s) {
             s++;
-        }else {
+        } else {
             word.begin++;
             s++;
         }

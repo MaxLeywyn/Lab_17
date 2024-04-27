@@ -4,23 +4,19 @@
 #include <windows.h>
 
 
-BagOfWords _bag;
+
 
 int main() {
 
     SetConsoleOutputCP(CP_UTF8);
 
-    char a[20]="wrf trh gtr";
-    char b[20]="tra gtr";
+    char a[2]="";
+    char b[2]="";
     char c[45];
 
-    WordDescriptor word;
+    deleteAllLikeEndWords(a);
 
-    getWord(a,&word);
-
-
-    printf("%d", allLettersWordInStr(word,a));
-    printf("%s   ",a);
+    printf("%s", a);
 
 
     return 0;
